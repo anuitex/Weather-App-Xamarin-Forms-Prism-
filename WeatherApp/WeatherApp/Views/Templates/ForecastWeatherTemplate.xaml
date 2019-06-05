@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:WeatherApp.Views.Templates"
+      xmlns:effects="clr-namespace:WeatherApp.Views.Effects"
+      x:Class="WeatherApp.Views.Templates.ForecastWeatherTemplate"
+             VerticalOptions="Fill"
+             x:Name="RootGrid"
+             Padding="0,10,0,0"
+             BackgroundColor="#DBE4EB">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <!--#region Title-->
+    <StackLayout>
+    <Label
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Text="{Binding Date,Converter={StaticResource DateConverter}}"
+        FontSize="Medium"/>
+    <Label
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Text="{Binding Date, StringFormat='{0:dd-MMM-yy}'}"
+        FontSize="Medium"/>
+    </StackLayout>
+    <!--#endregion Title-->
+
+    <ListView
+        Margin="10"
+        Grid.Row="1"
+        ItemsSource="{Binding WeatherInfos}"
+        SelectionMode="None"
+        SeparatorVisibility="None"
+        BackgroundColor="#DBE4EB"
+        HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <templates:DaysPeriodTemplate/>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</Grid>

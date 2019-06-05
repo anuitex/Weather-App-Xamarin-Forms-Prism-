@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             ios:Page.UseSafeArea="True"
+             x:Class="WeatherApp.Views.CurrentWeatherPage"
+             Title="{Binding Title}"
+             NavigationPage.HasNavigationBar="False">
+    <Grid ColumnSpacing="20"
+          BackgroundColor="#F7FBFC">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+
+        <!--#region Title-->
+        <StackLayout Grid.Row="0"
+                     HorizontalOptions="Fill"
+                     Orientation="Vertical"
+                     x:Name="titleStack">
+            <Label 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="{Binding CurrentCity, Mode=TwoWay}"
+                HorizontalTextAlignment="Center"
+                FontSize="30"/>
+            <Label 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="{Binding CurrentWeathers.Description}"
+                FontSize="Medium"/>
+        </StackLayout>
+        <!--#endregion Title-->
+
+        <!--#region Main factors-->
+        <Frame 
+            BackgroundColor="#DBE4EB"
+            Margin="10"
+            Grid.Row="1"
+            Padding="0"
+            CornerRadius="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="15*"/>
+                </Grid.RowDefinitions>
+
+                <border:SfBorder 
+                    Grid.ColumnSpan="5"
+                    CornerRadius="10" >
+                    <Image Source="{Binding CurrentWeather.Temperature, Converter={StaticResource TempToImage}}" Aspect="Fill"/>
+                </border:SfBorder>
+
+                <BoxView Grid.Row="1" Grid.ColumnSpan="5" Margin="0,-20,0,0" BackgroundColor="#DBE4EB" HorizontalOptions="Fill" HeightRequest="15"/>
+
+                <Label Grid.Row="1" Grid.ColumnSpan="5" HorizontalOptions="Center" Text="{Binding CurrentWeather.Temperature, Converter={StaticResource TempToDegree} ,StringFormat='Temperature : {0}'}"/>
+
+                <Label Grid.Row="2" Grid.ColumnSpan="5" HorizontalOptions="Center" Text="{Binding CurrentWeather.Pressure, StringFormat='Pressure : {0} hPa'}"/>
+
+                <Label Grid.Row="3" Grid.ColumnSpan="5" HorizontalOptions="Center" Text="{Binding CurrentWeather.WindSpeed, StringFormat='WindSpeed : {0} km/h'}"/>
+            </Grid>
+        </Frame>
+        <!--#endregion Main factors-->
+
+        <!--#region Details-->
+        <ScrollView Grid.Row="3">
+            <Grid  HorizontalOptions="Fill">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" Text="Minimum temperature" FontSize="Medium"/>
+                <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" Text="{Binding CurrentWeather.TempMin, Converter={StaticResource TempToDegree}}" FontSize="Large"/>
+                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Text="Maximum temperature" FontSize="Medium"/>
+                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" Text="{Binding CurrentWeather.TempMax, Converter={StaticResource TempToDegree}}" FontSize="Large"/>
+                <BoxView Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="Black"/>
+
+                <Label Grid.Row="3" Grid.Column="0" HorizontalOptions="Center" Text="Atmospheric pressure on the sea level" FontSize="Micro" HorizontalTextAlignment="Center"/>
+                <Label Grid.Row="4" Grid.Column="0" HorizontalOptions="Center" Text="{Binding CurrentWeather.SeaLevel, StringFormat='{0} hPa'}" FontSize="Large"/>
+                <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="Center" Text=" Atmospheric pressure on the ground level"  FontSize="Micro" HorizontalTextAlignment="Center"/>
+                <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="Center" Text="{Binding CurrentWeather.GroundLevel, StringFormat='{0} hPa'}" FontSize="Large"/>
+                <BoxView Grid.Row="5" Grid.ColumnSpan="2" BackgroundColor="Black"/>
+
+                <Label Grid.Row="6" Grid.Column="0" HorizontalOptions="Center" Text="Cloudiness" FontSize="Medium"/>
+                <Label Grid.Row="7" Grid.Column="0" HorizontalOptions="Center" Text="{Binding CurrentWeather.Clouds, StringFormat='{0} %'}" FontSize="Large"/>
+                <Label Grid.Row="6" Grid.Column="1" HorizontalOptions="Center" Text="Humidity"  FontSize="Medium"/>
+                <Label Grid.Row="7" Grid.Column="1" HorizontalOptions="Center" Text="{Binding CurrentWeather.Humidity, StringFormat='{0}%'}" FontSize="Large"/>
+                <BoxView Grid.Row="8" Grid.ColumnSpan="2" BackgroundColor="Black"/>
+            </Grid>
+        </ScrollView>
+        <!--#endregion Details-->
+    </Grid>
+</ContentPage>

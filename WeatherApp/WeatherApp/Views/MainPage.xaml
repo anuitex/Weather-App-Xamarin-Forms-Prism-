@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:WeatherApp.Views"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BackgroundColor="LightBlue"
+            android:TabbedPage.IsSwipePagingEnabled="False"
+            NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="LightBlue"
+             x:Class="WeatherApp.Views.MainPage">
+    <TabbedPage.Children>
+        <local:CurrentWeatherPage Icon="Current.png"/>
+        <local:ForecastPage Icon="Forecast.png"/>
+        <local:SettingsPage Icon="Settings.png"/>
+    </TabbedPage.Children>
+</TabbedPage>

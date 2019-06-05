@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:templates="clr-namespace:WeatherApp.Views.Templates"
+             BackgroundColor="White"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             Title="{Binding Title}"
+             x:Class="WeatherApp.Views.ForecastPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label
+            HorizontalTextAlignment="Center"
+            Text="{Binding CurrentCity}"
+            FontSize="30"/>
+        <cards:SfCardLayout
+            Grid.Row="1"
+            x:Name="cardLayout"
+            ShowSwipedCard="true"
+            SwipeDirection="Left">
+            <cards:SfCardView
+                BorderWidth="20"
+                BorderColor="Gray">
+                <templates:ForecastWeatherTemplate/>
+            </cards:SfCardView>
+            <cards:SfCardView>
+                <templates:ForecastWeatherTemplate/>
+            </cards:SfCardView>
+            <cards:SfCardView>
+                <templates:ForecastWeatherTemplate/>
+            </cards:SfCardView>
+            <cards:SfCardView>
+                <templates:ForecastWeatherTemplate/>
+            </cards:SfCardView>
+            <cards:SfCardView>
+                <templates:ForecastWeatherTemplate/>
+            </cards:SfCardView>
+        </cards:SfCardLayout>
+    </Grid>
+</ContentPage>

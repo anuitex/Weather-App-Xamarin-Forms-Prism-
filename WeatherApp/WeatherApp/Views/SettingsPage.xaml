@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="White"
+             Title="{Binding Title}"
+             x:Class="WeatherApp.Views.SettingsPage">
+    
+    <StackLayout  Margin="10,20,0,0" Spacing="10">
+        <Label Text="Region" HorizontalTextAlignment="Center" FontSize="Large"/>
+        <Picker ItemsSource="{Binding Regions}" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"/>
+        <Label Text="City" HorizontalTextAlignment="Center" FontSize="Large"/>
+        <Picker ItemsSource="{Binding CitiesInCountry}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}"/>
+
+        <Label Text="Degree type" HorizontalTextAlignment="Center" FontSize="Large"/>
+        <Picker ItemsSource="{Binding DegreeTypes}" SelectedItem="{Binding SelectedDegreeType, Mode=TwoWay}"/>
+    </StackLayout>
+</ContentPage>

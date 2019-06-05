@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.Templates.DaysPeriodTemplate"
+             IsEnabled="False">
+    <Frame CornerRadius="10" Margin="10" HasShadow="False">
+        <StackLayout Orientation="Vertical">
+
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Title}" FontSize="Large"/>
+
+            <Label HorizontalOptions="Center" Text="{Binding Temperature, Converter={StaticResource TempToDegree}, StringFormat='Temperature: {0}'}"/>
+
+            <Label HorizontalOptions="Center" Text="{Binding Pressure, StringFormat='Pressure : {0} hPa'}"/>
+
+            <Label HorizontalOptions="Center" Text="{Binding WindSpeed, StringFormat='WindSpeed : {0} km/h'}"/>
+        </StackLayout>
+    </Frame>
+</ViewCell>
