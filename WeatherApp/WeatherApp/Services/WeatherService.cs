@@ -44,7 +44,7 @@ namespace WeatherApp.Services
         {
             try
             {
-                string templateUrl = $"{Constants.ApiUrl}/forecast/hourly?id={id}&appid={Constants.ApiKey}";
+                string templateUrl = $"{Constants.ApiUrl}/forecast?id={id}&appid={Constants.ApiKey}";
                 var degreeType = await SecureStorage.GetAsync("DegreeType");
                 if (degreeType == DegreeType.Celsius.ToString())
                 {
